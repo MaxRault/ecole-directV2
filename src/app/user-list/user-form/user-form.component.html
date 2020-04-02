@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Enregistrer un nouvel utilisateur</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
+        <div class="form-group">
+          <label for="nom">nom</label>
+          <input type="text" id="nom"
+                 class="form-control" formControlName="nom">
+        </div>
+        <div class="form-group">
+            <label for="prenom">prenom</label>
+            <input type="text" id="prenom"
+                   class="form-control" formControlName="prenom">
+        </div>
+        <div class="form-group">
+          <label for="droit">droits:</label>
+          <select class="form-control" formControlName="droit" id="droit" [(ngModel)]="post" ng-change="getDataStatus()" [ngModelOptions]="{standalone: true}">
+            <option value="Professeur">Professeur</option>
+            <option value="Etudiant">Etudiant</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="getDataStatus() === 'Admin'" [(ngModel)]="post">
+          <label for="post">poste</label>
+          <input type="text" id="post"
+                 class="form-control" formControlName="post">
+        </div>
+        <div class="form-group" *ngIf="getDataStatus() === 'Professeur'" [(ngModel)]="post" [ngModelOptions]="{standalone: true}">
+          <label for="matieres">Matières:</label>
+          <select class="form-control" formControlName="matieres" id="matieres">
+            <option value="Professeur">Professeur</option>
+            <option value="Etudiant">Etudiant</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="getDataStatus() === 'Professeur' || getDataStatus() === 'Etudiant'" [(ngModel)]="post" [ngModelOptions]="{standalone: true}">
+          <label for="formation">Formation:</label>
+          <select class="form-control" formControlName="formation" id="formation">
+            <option value="Professeur">Professeur</option>
+            <option value="Etudiant">Etudiant</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mail">Mail</label>
+          <input type="text" id="mail"
+                 class="form-control" formControlName="mail">
+        </div>
+        <div class="form-group">
+          <label for="password">mot de passe</label>
+          <input type="password" id="password"
+                 class="form-control" formControlName="password">
+        </div>
+        <button class="btn btn-success" [disabled]="userForm.invalid"
+                type="submit">Enregistrer
+        </button>
+  
+      </form>
+    </div>
+  </div>

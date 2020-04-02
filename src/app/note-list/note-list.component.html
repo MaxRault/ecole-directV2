@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h2>Vos notes</h2>
+      <div class="list-group">
+        <button
+          class="list-group-item"
+          *ngFor="let note of notes; let i = index"
+          (click)="onViewNote(i)">
+          <h3 class="list-group-item-heading">
+            {{ note.nomEleve }}
+            <button class="btn btn-default pull-right" (click)="onDeleteNote(note)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </h3>
+          <p class="list-group-item-text">{{ note.note }}</p>
+        </button>
+      </div>
+      <button class="btn btn-primary" (click)="onNewNote()">Nouvel note</button>
+    </div>
+  </div>
