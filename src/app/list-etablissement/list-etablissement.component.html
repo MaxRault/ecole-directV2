@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h2>Liste des etablissements</h2>
+      <div class="list-group">
+        <button
+          class="list-group-item"
+          *ngFor="let school of schools; let i = index"
+          (click)="onViewSchool(i)">
+          <h3 class="list-group-item-heading">
+            {{ school.nom }}
+            <button class="btn btn-default pull-right" (click)="onDeleteSchool(school)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </h3>
+          <p class="list-group-item-text">{{ school.adresse }}</p>
+        </button>
+      </div>
+      <button class="btn btn-primary" (click)="onNewSchool()">Nouvel Etablissement</button>
+    </div>
+  </div>

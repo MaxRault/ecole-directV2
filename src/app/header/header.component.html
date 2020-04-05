@@ -1,17 +1,17 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="isAuth === true && userData.droit === 'Professeur' || userData.droit === 'Etudiant'">
           <a routerLink="notes">Notes</a>
         </li>
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="isAuth === true && userData.droit === 'Admin'">
           <a routerLink="users">Utilisateurs</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="isAuth === true && userData.droit === 'Admin'">
+          <a routerLink="etablissement">Etablissement</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li routerLinkActive="active" *ngIf="!isAuth">
-          <a routerLink="auth/signup">Créer un compte</a>
-        </li>
         <li routerLinkActive="active" *ngIf="!isAuth">
           <a routerLink="auth/signin">Connexion</a>
         </li>

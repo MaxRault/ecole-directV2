@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h2>Liste des Matieres</h2>
+      <div class="list-group">
+        <button
+          class="list-group-item"
+          *ngFor="let schoolsMatiere of schoolsMatieres; let i = index"
+          (click)="onViewSchoolMatiere(i)">
+          <h3 class="list-group-item-heading">
+            {{ schoolsMatiere.nom }}
+            {{ schoolsMatiere.nomProf }}
+            <button class="btn btn-default pull-right" (click)="onDeleteSchoolMatiere(schoolsMatiere)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </h3>
+          <p class="list-group-item-text">{{ schoolsMatiere.commentaire }}</p>
+        </button>
+      </div>
+      <button class="btn btn-primary" (click)="onNewSchoolMatiere()">Nouvel Matiere</button>
+    </div>
+  </div>

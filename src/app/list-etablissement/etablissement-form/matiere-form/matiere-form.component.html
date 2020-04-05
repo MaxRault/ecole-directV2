@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Enregistrer une nouvelle Matiere</h2>
+      <form [formGroup]="matiereForm" (ngSubmit)="onSaveSchoolMatiere()">
+        <div class="form-group">
+          <label for="matiereNom">Nom de la matiere</label>
+          <input type="text" id="matiereNom"
+                 class="form-control" formControlName="matiereNom">
+        </div>
+        <div class="form-group">
+            <label for="nomProf">nom du Professeur</label>
+            <input type="text" id="nomProf"
+                   class="form-control" formControlName="nomProf">
+        </div>
+        <div class="form-group">
+            <label for="commentaire">Commentaire</label>
+            <input type="textarea" id="commentaire"
+                   class="form-control" formControlName="commentaire">
+        </div>
+        <button class="btn btn-success" [disabled]="matiereForm.invalid"
+                type="submit">Enregistrer
+        </button>
+      </form>
+    </div>
+  </div>

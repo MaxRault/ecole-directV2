@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h1>{{ shcoolFormation.nom }} {{ shcoolFormation.annee }}</h1>
+      <p>{{ shcoolFormation.commentaire }}</p>
+      <app-list-matieres></app-list-matieres>
+      <app-list-professeur></app-list-professeur>
+      <app-list-etudiant></app-list-etudiant>
+      <button class="btn btn-default" (click)="onBack()">Retour</button>
+    </div>
+  </div>

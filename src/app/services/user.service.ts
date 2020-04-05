@@ -12,11 +12,18 @@ export class UserService {
   constructor() {
     this.getUserData();
 }
-  user: User[] = [];
+  user: User[];
+  fetchData: User[] = [];
+  userData: User;
   userSubject = new Subject<User[]>();
+  userDataSubject = new Subject<User>();
 
   emitUser() {
     this.userSubject.next(this.user);
+  }
+
+  emitUserData() {
+    this.userDataSubject.next(this.userData);
   }
 
   saveUser() {
@@ -30,6 +37,32 @@ export class UserService {
           this.emitUser();
         }
       );
+  }
+  
+  getData() {
+    return new Promise(
+      (resolve, reject) => {
+        firebase.database().ref('/users').orderByChild('mail').equalTo(firebase.auth().currentUser.email).once('value').then(
+          (data: DataSnapshot) => {
+           this.fetchData.push(data.val());
+           resolve(this.userData);
+           for (let i = 0; this.fetchData[0][i] !== firebase.auth().currentUser.email; i++) {
+              if (this.fetchData[0][i] === undefined) {
+                // tslint:disable-next-line: no-unused-expression
+                this.fetchData[0][i + 1];
+              } else {
+                this.userData = this.fetchData[0][i];
+                console.log('in Signin', this.userData);
+                this.emitUserData();
+                break;
+              }
+            }
+          }, (error) => {
+            reject(error);
+          }
+        );
+      }
+    );
   }
 
   getSingleUser(id: number) {

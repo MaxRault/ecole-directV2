@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Enregistrer un nouveau Professeur</h2>
+      <form [formGroup]="etudiantForm" (ngSubmit)="onSaveSchoolEtudiant()">
+        <div class="form-group">
+          <label for="etudiantNom">Nom</label>
+          <input type="text" id="etudiantNom"
+                 class="form-control" formControlName="etudiantNom">
+        </div>
+        <div class="form-group">
+            <label for="etudiantPrenom">Prénom</label>
+            <input type="text" id="etudiantPrenom"
+                   class="form-control" formControlName="etudiantPrenom">
+        </div>
+        <div class="form-group">
+            <label for="etudiantDateNaiss">Date de naissance</label>
+            <input type="textarea" id="etudiantDateNaiss"
+                   class="form-control" formControlName="etudiantDateNaiss">
+        </div>
+        <div class="form-group">
+            <label for="etudiantTel">Téléphonne</label>
+            <input type="text" id="professeurTel"
+                   class="form-control" formControlName="etudiantTel">
+        </div>
+        <div class="form-group">
+            <label for="etudiantMail">Email</label>
+            <input type="textarea" id="professeurMail"
+                   class="form-control" formControlName="etudiantMail">
+        </div>
+        <button class="btn btn-success" [disabled]="etudiantForm.invalid"
+                type="submit">Enregistrer
+        </button>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h2>Liste des Professeurs</h2>
+      <div class="list-group">
+        <button
+          class="list-group-item"
+          *ngFor="let Professeur of schoolsProfesseur; let i = index"
+          (click)="onViewSchoolProfesseur(i)">
+          <h3 class="list-group-item-heading">
+            {{ Professeur.nom }}
+            {{ Professeur.prenom }}
+            <button class="btn btn-default pull-right" (click)="onDeleteSchoolProfesseur(Professeur)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </h3>
+          <p class="list-group-item-text">{{ Professeur.dateNaissance }}</p>
+        </button>
+      </div>
+      <button class="btn btn-primary" (click)="onNewSchoolProfesseur()">Nouveau Professeur</button>
+    </div>
+  </div>

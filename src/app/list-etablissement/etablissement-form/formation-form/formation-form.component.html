@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Enregistrer une nouvelle formation</h2>
+      <form [formGroup]="formationForm" (ngSubmit)="onSaveSchool()">
+        <div class="form-group">
+          <label for="formationName">Nom</label>
+          <input type="text" id="formationName"
+                 class="form-control" formControlName="formationName">
+        </div>
+        <div class="form-group">
+            <label for="annee">Annee</label>
+            <input type="text" id="annee"
+                   class="form-control" formControlName="annee">
+        </div>
+        <div class="form-group">
+            <label for="commentaire">Commentaire</label>
+            <input type="textarea" id="commentaire"
+                   class="form-control" formControlName="commentaire">
+        </div>
+        <button class="btn btn-success" [disabled]="formationForm.invalid"
+                type="submit">Enregistrer
+        </button>
+      </form>
+    </div>
+  </div>

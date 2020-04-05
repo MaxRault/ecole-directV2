@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-form',
@@ -13,7 +14,7 @@ export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   post: string;
 constructor(private formBuilder: FormBuilder, private userService: UserService,
-              private router: Router) { }
+              private router: Router, private authService: AuthService) { }
 
 
 ngOnInit() {
@@ -93,6 +94,7 @@ onSaveUser() {
       newUser.formation = formation;
     }
     this.userService.createNewUser(newUser);
+    this.authService.createNewUser(mail, password);
     this.router.navigate(['/users']);
   }
 }

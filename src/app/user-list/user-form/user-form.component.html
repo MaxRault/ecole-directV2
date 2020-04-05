@@ -27,19 +27,11 @@
         </div>
         <div class="form-group" *ngIf="getDataStatus() === 'Professeur'" [(ngModel)]="post" [ngModelOptions]="{standalone: true}">
           <label for="matieres">Matières:</label>
-          <select class="form-control" formControlName="matieres" id="matieres">
-            <option value="Professeur">Professeur</option>
-            <option value="Etudiant">Etudiant</option>
-            <option value="Admin">Admin</option>
-          </select>
+          <input class="form-control" formControlName="matieres" id="matieres">           
         </div>
         <div class="form-group" *ngIf="getDataStatus() === 'Professeur' || getDataStatus() === 'Etudiant'" [(ngModel)]="post" [ngModelOptions]="{standalone: true}">
           <label for="formation">Formation:</label>
-          <select class="form-control" formControlName="formation" id="formation">
-            <option value="Professeur">Professeur</option>
-            <option value="Etudiant">Etudiant</option>
-            <option value="Admin">Admin</option>
-          </select>
+          <input class="form-control" formControlName="formation" id="formation">         
         </div>
         <div class="form-group">
           <label for="mail">Mail</label>
